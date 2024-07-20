@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "selenium-scraping-poetry"
+version = "0.1.0"
+description = ""
+authors = ["Tung Nguyen <tnguyen@bluemethodllc.com>"]
+readme = "README.md"
+packages = [{include = "selenium_scraping_poetry"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selenium = "^4.22.0"
+loguru = "^0.7.2"
+beautifulsoup4 = "^4.12.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
