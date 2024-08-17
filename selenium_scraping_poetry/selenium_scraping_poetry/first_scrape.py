@@ -1,3 +1,4 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
@@ -5,6 +6,7 @@ from selenium.webdriver.common.by import By
 from loguru import logger
 from bs4 import BeautifulSoup
 from pathlib import Path
+from selenium.webdriver.common.keys import Keys
 file_path = Path(__file__).resolve().parent
 
 def main():
@@ -48,10 +50,32 @@ def main():
     # logger.info(f"Soup: {soup}")
     # logger.info(f"Titles: {titles}")
     driver.get("https://www.brainyquote.com/")
+    # driver.get("https://www.python.org")
     # search = driver.find_element_by_xpath("//div[@class='input-container']")
     # logger.info(search)
     # Retrieve the page source
     # html = driver.page_source
+    time.sleep(3)
+
+    # Find the search bar element
+    search_bar = driver.find_element(By.NAME, 'q')
+
+    # Enter a search term
+    search_bar.send_keys('inspiration')
+
+    # Submit the search
+    search_bar.send_keys(Keys.RETURN)
+
+    # Allow some time for the results to load
+    time.sleep(3)
+
+    # Find and print the search results
+    results = driver.find_elements(By.CLASS_NAME, 'bqQt')
+    for result in results:
+        print(result.text)
+
+    # Close the browser
+    driver.quit()
 
     # # Close the driver
     # driver.quit()
