@@ -30,7 +30,6 @@ jobs:
         key: venv-$${{ hashFiles('poetry.lock') }}
     - name: Install the project dependencies
       run: |
-        cd ..
         poetry install
     - name: Run the automated tests
       run: 
